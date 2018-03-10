@@ -1,5 +1,7 @@
 'use strict';
 
+//this file adapted from https://github.com/AugurProject/react-blockies
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
