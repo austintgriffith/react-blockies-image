@@ -183,37 +183,36 @@ var Identicon = function (_Component) {
         cc.fillRect(0, 0, identicon.width, identicon.height);
         cc.fillStyle = color;
 
-        console.log("imageData",imageData)
 
-        let neededCount = (size/border * 4)
+        let neededCount = (size/border * 2)
+        var split = neededCount/4
+
 
         for (var i = 0; i < neededCount; i++) {
           // if data is 2, choose spot color, if 1 choose foreground
           cc.fillStyle = imageData[i] === 1 ? color : spotcolor;
 
-          var quarter = (neededCount/4)
           if (imageData[i]) {
-
             var col=0;
             var row=0;
-            if(i<quarter){
-              col=i;
-            }else if(i<quarter*2){
-              col=quarter-1
-              row=i-(quarter);
-            }else if(i<quarter*3){
-              row=quarter-1
-              col=i-(quarter*2);
+            var col2=0;
+            var row2=0;
+            if(i<split){
+              col=split-i-1;
+              col2=i+split;
+            }else if(i<split*3){
+              row=i-split
+              col=col2
+              row2=row;
+              col2=(split*2)-1
             }else{
-              col=0
-              row=i-(quarter*3);
+              col=(split-1)-(i-split*3)
+              col2=(split)+(i-split*3)
+              row=(split*2)-1
+              row2=row
             }
-
-            console.log("@block",i,col,row,cc.fillStyle)
             cc.fillRect(col*border, row * border, border, border);
-            cc.fillRect(col*border, row * border, border, border);
-          }else{
-            console.log("#block",i,bg)
+            cc.fillRect(col2*border, row2 * border, border, border);
           }
         }
       }
