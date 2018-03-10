@@ -30,7 +30,7 @@ import Blockies from 'react-blockies-image';
 <Blockies
   seed={"austingriffith.eth"}
   size={200}
-  border={8}
+  border={10}
   image={"/austin.jpg"}
 />
 ```
